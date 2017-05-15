@@ -56,7 +56,6 @@ int clsizelmax = 44, clsizewmax = 1, clsizehmax = 89;
 	}
 	else if (bclothes == true){
 		cout << endl <<"Amount of clothes on the hanger in your cupboard: " << amountclothes << endl;
-		
 	}
 }
 float space;
@@ -97,7 +96,6 @@ void volume(){
 }
 void getCupboardvolume(){
 	cout << endl << "Volume of your cupboard in cubic meters: " << (space/1000000) << endl;
-	
 }
 void csafe(){
 	cout << endl << "Do you want to shove a safe in the cupboard? |Yes or no(y,n)|" << endl;
@@ -117,13 +115,23 @@ void csafe(){
 	amountcup++;
 	cout << endl << "Destruct, there was " << amountcup << " cupboard" << endl << endl;
 }
+const bool operator == (const Cupboard &obj1)
+{
+	if ((sizel == obj1.sizel) && (sizew == obj1.sizew) && (sizeh == obj1.sizeh))
+		return true;
+	return false;
+}
+};
+class example{
 };
 int Cupboard::amountcup;
 int main(int argc, char* argv[]){
-	Cupboard (200, 70, 200);
+	Cupboard obj0(200, 70, 200);
 	Cupboard obj1;
 	obj1.create();
 	obj1.setCupboardsizes();
+	if (obj1 == obj0) cout << endl << "Example cupboard and yours cupboard have are exactly same sizes" << endl;
+	else cout << endl << "Sizes are different" << endl;
 	obj1.getCupboardvolume();
 	obj1.volume();
 	obj1.clothes();
